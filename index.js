@@ -2,8 +2,8 @@
 
 const FS     = require('fs')
 const globby = require('globby')
-const r1     = /import\s+\{([^\}]+)\}\s+from\s+([^\s]+)/g // import { } from ''
-const r2     = /import\s+([^\{\}]+)\s+from\s+([^\s]+)/g // import xxx from ''
+const r1     = /import\s+\{([^\}]+)\}\s+from\s+(['"][^\s]+['"])/g // import { } from ''
+const r2     = /import\s+([^\{\}]+)\s+from\s+(['"][^\s]+['"])/g // import xxx from ''
 
 const args = process.argv.slice(2)
 
