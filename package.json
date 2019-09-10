@@ -1,6 +1,6 @@
 {
   "name": "replace-import-with-require",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Replace ES2015 import statements with Node.js CommonJS require equivalent",
   "main": "index.js",
   "files": [
