@@ -13,6 +13,6 @@ if [ "$output" == "$expected_output" ]; then
   exit 0
 else
   echo "Failed :("
-  rm test-output.js
+  # rm test-output.js
   exit -1
 fi

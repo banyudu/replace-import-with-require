@@ -2,14 +2,13 @@
 
 const FS     = require('fs')
 const globby = require('globby')
-const r1     = /^(let|var|const) +([a-zA-Z_$][a-zA-Z0-9_$]*) +\= +(require)\((('|")[a-zA-Z0-9-_.\/]+('|"))\)/gm // const createStore = require('redux')
-const r2     = /^(let|var|const) +([a-zA-Z_$][a-zA-Z0-9_$]*) +\= +(require)\((('|")[a-zA-Z0-9-_.\/]+('|"))\)\.([a-zA-Z][a-zA-Z0-9]+)/gm // const createStore = require('redux').createStore
-const r3     = /^(let|var|const) +(\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}) +\= +(require)\((('|")[a-zA-Z0-9-_.\/]+('|"))\)/gm // const { createStore } = require('redux')
+const r1     = /import\s+\{([^\}]+)\}\s+from\s+([^\s]+)/g // import { } from ''
+const r2     = /import\s+([^\{\}]+)\s+from\s+([^\s]+)/g // import xxx from ''
 
 const args = process.argv.slice(2)
 
 if (!args.length) {
-  console.error('Please pass a directory glob to "replace-require-with-import"\n')
+  console.error('Please pass a directory glob to "replace-import-with-require"\n')
   process.exit(1)
 }
 
@@ -23,9 +22,8 @@ paths.forEach(function (p) {
 
 function replaceInFile(fp) {
   const result = FS.writeFileSync(fp, FS.readFileSync(fp, 'utf-8')
-    .replace(r3, `import { $3 } from $5`)
-    .replace(r2, `import { $7 as $2 } from $4`)
-    .replace(r1, `import $2 from $4`), 'utf-8')
+    .replace(r2, `const $1 = require($2).default`)
+    .replace(r1, `const { $1 } = require($2)`), 'utf-8')
   console.log(`> ${fp}`)
   return result
 }

@@ -21,9 +21,9 @@
     "commonjs"
   ],
   "bin": {
-    "require2import": "./index.js"
+    "import2require": "./index.js"
   },
-  "author": "James J. Womack (@james_womack)",
+  "author": "Yudu Ban(banyudu@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jameswomack/replace-require-with-import/issues"

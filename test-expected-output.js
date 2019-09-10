@@ -1,6 +1,6 @@
-import createStore0 from 'redux'
-import { createStore as createStore1 } from 'redux'
-import { createStore2 } from 'redux'
+const createStore0 = require('redux')
+const createStore1 = require('redux').createStore
+const { createStore2 } = require('redux')
 
 console.dir({
   createStore0,
