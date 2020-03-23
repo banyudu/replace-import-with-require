@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/jameswomack/replace-require-with-import#readme",
   "dependencies": {
-    "globby": "^6.1.0"
+    "globby": "^11.0.0"
   },
   "contributors": [
     "Ole Morten Didriksen (https://github.com/oledid)"
